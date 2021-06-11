@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Acciones } from "./components/Acciones";
 import { Informacion } from "./components/Informacion";
 import { Teclado } from "./components/Teclado";
+import imgAlf from "./img/image.jpg";
+import imgAlf2 from "./img/image2.jpg";
 
 function App() {
   // Declaraciones Teclado
@@ -21,6 +23,7 @@ function App() {
   };
   // Declaraciones llamar / colgar
   const [llamando, setLlamando] = useState(false);
+  const [alf, setAlf] = useState(true);
   const llamaCuelga = () => {
     if (llamando) {
       setLlamando(false);
@@ -28,8 +31,12 @@ function App() {
     } else {
       setLlamando(true);
       setTimeout(() => {
+        setAlf(false);
+      }, 2500);
+      setTimeout(() => {
         setLlamando(false);
         clearDisplay();
+        setAlf(true);
       }, 5000);
     }
   };
@@ -53,6 +60,11 @@ function App() {
           />
         </main>
       </div>
+      <img
+        className={llamando ? "alf" : "alf-off"}
+        src={alf ? imgAlf : imgAlf2}
+        alt="Alf contestando al teléfono"
+      />
     </>
   );
 }
