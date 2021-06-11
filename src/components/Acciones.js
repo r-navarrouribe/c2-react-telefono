@@ -1,29 +1,28 @@
 import { Display } from "./Display";
 
 export const Acciones = (props) => {
-  const { numberTyped, llamando } = props;
+  const { numberTyped, llamando, llamaCuelga } = props;
   return (
     <div className="acciones">
       <Display numberTyped={numberTyped} />
       {/* <!-- El botón de llamar debe tener la clase "activo" cuando --> */}
       {/* <!-- el número de teléfono tiene 9 cifras --> */}
-      {/* <a href="llamar" className="llamar">
-        Llamar
-      </a> */}
-      {/* <!-- Sólo se tiene que ver un botón u otro --> */}
-      {/* <a href="colgar" className="colgar activo">
-        Colgar
-      </a> */}
-      <a
-        href={llamando ? "colgar" : "llamar"}
-        className={
-          llamando
-            ? "colgar activo"
-            : `llamar${numberTyped.length === 9 ? " activo" : ""}`
-        }
+      <button
+        className={`llamar${numberTyped.length === 9 ? " activo" : ""}${
+          llamando ? " off" : ""
+        }`}
+        onClick={() => llamaCuelga()}
+        disabled={numberTyped < 9 ? true : false}
       >
-        {llamando ? "Colgar" : "Llamar"}
-      </a>
+        Llamar
+      </button>
+      {/* <!-- Sólo se tiene que ver un botón u otro --> */}
+      <button
+        className={llamando ? `colgar activo` : `off`}
+        onClick={() => llamaCuelga()}
+      >
+        Colgar
+      </button>
     </div>
   );
 };

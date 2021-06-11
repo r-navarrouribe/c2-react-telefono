@@ -21,19 +21,36 @@ function App() {
   };
   // Declaraciones llamar / colgar
   const [llamando, setLlamando] = useState(false);
+  const llamaCuelga = () => {
+    if (llamando) {
+      setLlamando(false);
+      clearDisplay();
+    } else {
+      setLlamando(true);
+      setTimeout(() => {
+        setLlamando(false);
+        clearDisplay();
+      }, 5000);
+    }
+  };
   return (
     <>
       <div className="contenedor">
         {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" --> */}
-        <Informacion />
+        <Informacion llamando={llamando} />
         <main className="telefono">
           <Teclado
             tecladoNumerico={tecladoNumerico}
             typeNumber={typeNumber}
             clearDisplay={clearDisplay}
             eraseLastNumber={eraseLastNumber}
+            llamando={llamando}
           />
-          <Acciones numberTyped={numberTyped} llamando={llamando} />
+          <Acciones
+            numberTyped={numberTyped}
+            llamando={llamando}
+            llamaCuelga={llamaCuelga}
+          />
         </main>
       </div>
     </>
