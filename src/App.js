@@ -20,7 +20,7 @@ function App() {
     setNumberTyped(numberTyped.slice(0, -1));
   };
   // Declaraciones llamar / colgar
-
+  const [llamando, setLlamando] = useState(false);
   return (
     <>
       <div className="contenedor">
@@ -33,7 +33,7 @@ function App() {
             clearDisplay={clearDisplay}
             eraseLastNumber={eraseLastNumber}
           />
-          <Acciones numberTyped={numberTyped} />
+          <Acciones numberTyped={numberTyped} llamando={llamando} />
         </main>
       </div>
     </>
