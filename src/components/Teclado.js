@@ -1,15 +1,16 @@
 import { Tecla } from "./Tecla";
 
-export const Teclado = () => {
+export const Teclado = (props) => {
+  const { tecladoNumerico, typeNumber, clearDisplay, eraseLastNumber } = props;
   return (
     <div className="botones">
       <ol className="teclado">
-        <Tecla />
+        <Tecla tecladoNumerico={tecladoNumerico} typeNumber={typeNumber} />
         <li>
-          <button>borrar</button>
+          <button onClick={eraseLastNumber}>borrar</button>
         </li>
         <li>
-          <button>borrar Todo</button>
+          <button onClick={clearDisplay}>borrar Todo</button>
         </li>
       </ol>
     </div>

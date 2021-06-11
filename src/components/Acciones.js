@@ -1,9 +1,10 @@
 import { Display } from "./Display";
 
-export const Acciones = () => {
+export const Acciones = (props) => {
+  const { numberTyped } = props;
   return (
     <div className="acciones">
-      <Display />
+      <Display numberTyped={numberTyped} />
       {/* <!-- El botón de llamar debe tener la clase "activo" cuando --> */}
       {/* <!-- el número de teléfono tiene 9 cifras --> */}
       <a href="llamar" className="llamar">

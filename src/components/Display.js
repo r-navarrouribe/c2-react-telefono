@@ -1,3 +1,4 @@
-export const Display = () => {
-  return <span className="numero"></span>;
+export const Display = (props) => {
+  const { numberTyped } = props;
+  return <span className="numero">{numberTyped}</span>;
 };
