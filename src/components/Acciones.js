@@ -12,7 +12,7 @@ export const Acciones = (props) => {
           llamando ? " off" : ""
         }`}
         onClick={() => llamaCuelga()}
-        disabled={numberTyped < 9 ? true : false}
+        disabled={numberTyped.length < 9 ? true : false}
       >
         Llamar
       </button>
